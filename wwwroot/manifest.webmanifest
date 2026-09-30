@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "Barra de Valdorros",
+  "short_name": "Barra Valdorros",
+  "description": "Calculadora de precios para la barra de las fiestas de Valdorros.",
+  "lang": "es",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f8f2",
+  "theme_color": "#3f7658",
+  "icons": [
+    {
+      "src": "/app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -4,8 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#3f7658">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Barra Valdorros">
   <title>Barra de Valdorros</title>
+  <link rel="manifest" href="/manifest.webmanifest">
   <link rel="icon" href="/escudo-valdorros.png">
+  <link rel="apple-touch-icon" href="/escudo-valdorros.png">
   <style>
     :root{--green-950:#193f2b;--green-800:#2c6547;--green-700:#3f7658;--green-300:#b8d7bf;--green-200:#d8ebdc;--green-100:#edf7ef;--lime:#c8dd6b;--paper:#fff;--ink:#1d3024;--muted:#63766a;--danger:#ad473f}
     *{box-sizing:border-box}
@@ -14,12 +19,11 @@
     button{border:0;cursor:pointer;font-weight:750}
     button:disabled{cursor:default;opacity:.42}
     .app-header{background:var(--paper);border-bottom:1px solid var(--green-200);box-shadow:0 2px 12px #234a3110}
-    .header-inner{max-width:900px;margin:auto;padding:12px 16px;display:grid;grid-template-columns:52px 1fr auto;align-items:center;gap:13px}
+    .header-inner{max-width:900px;margin:auto;padding:12px 16px;display:grid;grid-template-columns:52px 1fr;align-items:center;gap:13px}
     .crest{display:flex;justify-content:center}
     .crest img{display:block;width:44px;height:68px;object-fit:contain}
     h1{margin:0;font-size:clamp(21px,5vw,28px);line-height:1.05;color:var(--green-950)}
     .subtitle{margin:5px 0 0;color:var(--muted);font-size:13px}
-    .summary-button{min-height:44px;padding:0 16px;border-radius:11px;background:var(--green-100);color:var(--green-800);box-shadow:inset 0 0 0 1px var(--green-200)}
     main{width:min(900px,100%);margin:18px auto;padding:0 14px 28px;display:grid;gap:14px}
     .category-bar{min-height:48px;margin-bottom:10px;padding:0 17px;border-radius:12px;background:var(--green-700);color:white;display:flex;align-items:center;justify-content:space-between;box-shadow:0 5px 14px #315f4320}
     .category-bar strong{font-size:17px}
@@ -47,20 +51,14 @@
     .receipt{margin:8px 0;padding:8px 10px;list-style:none;border-radius:8px;background:#ffffffa8;color:#506359;font-size:13px}
     .receipt:empty{display:none}
     .receipt li{display:flex;justify-content:space-between;gap:10px;margin:4px 0}
-    .primary,.secondary{width:100%;min-height:48px;border-radius:9px}
-    .primary{background:var(--green-700);color:white}
-    .secondary{margin-top:8px;background:#dfeedd;color:var(--green-800)}
-    .message{min-height:20px;margin:9px 2px 0;text-align:center;color:var(--danger);font-size:13px}
+    .reset-button{width:100%;min-height:48px;margin-top:8px;border-radius:9px;background:var(--green-700);color:white}
+    .message{min-height:20px;margin:9px 2px 0;text-align:center;color:var(--green-800);font-size:13px}
     .hint{margin:8px 2px 0;color:var(--muted);font-size:11px;text-align:center}
     .credits{width:min(900px,100%);margin:0 auto 22px;padding:0 16px;text-align:center;color:#78867c;font-size:10px}
     .credits a{color:inherit}
-    dialog{width:min(92%,500px);padding:22px;border:0;border-radius:17px;color:var(--ink);box-shadow:0 20px 70px #122a1c4d}
-    dialog::backdrop{background:#10271ccc}
-    dialog h2{margin:0 0 12px;color:var(--green-950)}
-    .summaryrow{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--green-100)}
     @media(min-width:760px){main{grid-template-columns:minmax(0,1fr) 330px;align-items:start}.checkout{position:sticky;top:18px}.header-inner{padding-block:15px}.product{min-height:68px}}
-    @media(max-width:430px){.header-inner{grid-template-columns:46px 1fr auto;padding:9px 12px;gap:9px}.crest img{width:38px;height:60px}.summary-button{padding:0 12px}.subtitle{font-size:12px}main{margin-top:12px;padding-inline:10px}.product{padding-left:11px}.product h2{font-size:14px}.price{font-size:12px;margin-left:3px}.controls{grid-template-columns:40px 38px 40px;gap:5px}.controls button,.qty{height:40px}.checkout{padding:13px 11px}.metric-value{font-size:19px}.payment-input{font-size:18px}}
-    @media(max-width:350px){.header-inner{grid-template-columns:40px 1fr}.crest img{width:34px}.summary-button{grid-column:1/-1}.product{align-items:flex-start;flex-direction:column}.controls{align-self:flex-end}}
+    @media(max-width:430px){.header-inner{grid-template-columns:46px 1fr;padding:9px 12px;gap:9px}.crest img{width:38px;height:60px}.subtitle{font-size:12px}main{margin-top:12px;padding-inline:10px}.product{padding-left:11px}.product h2{font-size:14px}.price{font-size:12px;margin-left:3px}.controls{grid-template-columns:40px 38px 40px;gap:5px}.controls button,.qty{height:40px}.checkout{padding:13px 11px}.metric-value{font-size:19px}.payment-input{font-size:18px}}
+    @media(max-width:350px){.header-inner{grid-template-columns:40px 1fr}.crest img{width:34px}.product{align-items:flex-start;flex-direction:column}.controls{align-self:flex-end}}
   </style>
 </head>
 <body>
@@ -71,9 +69,8 @@
       </a>
       <div>
         <h1>Barra de Valdorros</h1>
-        <p class="subtitle">Fiestas · Cobro en efectivo</p>
+        <p class="subtitle">Fiestas · Calculadora sin conexión</p>
       </div>
-      <button class="summary-button" id="summary">Ventas</button>
     </div>
   </header>
 
@@ -105,36 +102,44 @@
         <button data-pay="50">50 €</button>
       </div>
       <ul class="receipt" id="receipt" aria-label="Líneas del pedido"></ul>
-      <button class="primary" id="charge" disabled>Cobrar y guardar venta</button>
-      <button class="secondary" id="reset">Borrar pedido</button>
+      <button class="reset-button" id="reset">Nuevo pedido / borrar</button>
       <div class="message" id="message" role="status"></div>
-      <p class="hint">La venta se comparte al pulsar «Cobrar».</p>
+      <p class="hint">Añádela a la pantalla de inicio para usarla sin Internet.</p>
     </aside>
   </main>
 
   <p class="credits">Escudo de Valdorros por <a href="https://commons.wikimedia.org/wiki/User:Asqueladd" target="_blank" rel="noreferrer">Asqueladd</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noreferrer">CC BY-SA 3.0</a>.</p>
 
-  <dialog id="dialog">
-    <h2>Resumen de ventas</h2>
-    <div id="summaryBody"></div>
-    <button class="secondary" id="close">Cerrar</button>
-  </dialog>
-
   <script>
+    const products=[
+      {id:'agua',name:'Agua',priceCents:100},
+      {id:'refresco',name:'Refresco',priceCents:200},
+      {id:'cachi',name:'Cachi Kalimotxo / Cerveza',priceCents:500},
+      {id:'cachi-cubata',name:'Cachi Cubata',priceCents:1100},
+      {id:'pinta',name:'Pinta cerveza / Kali',priceCents:300},
+      {id:'cubata',name:'Cubata',priceCents:600},
+      {id:'cana',name:'Caña / botellín',priceCents:150},
+      {id:'radler',name:'Radler / 0,0',priceCents:150},
+      {id:'chupito',name:'Chupito',priceCents:150},
+      {id:'jager',name:'Jäger',priceCents:200},
+      {id:'vino',name:'Vino',priceCents:150},
+      {id:'vermut',name:'Vermut',priceCents:200},
+      {id:'mosto',name:'Mosto',priceCents:150},
+      {id:'zumo',name:'Zumo / batido',priceCents:200}
+    ];
     const $=id=>document.getElementById(id);
-    const money=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n/100);
-    let products=[],quantities={},busy=false,saleId=null,lastChange=null;
+    const money=cents=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(cents/100);
+    let quantities={};
 
     function received(){
       const raw=$('received').value.trim().replace(',','.');
       if(!/^\d+(\.\d{1,2})?$/.test(raw))return null;
-      const [a,b='']=raw.split('.');
-      const value=Number(a)*100+Number(b.padEnd(2,'0'));
+      const [euros,cents='']=raw.split('.');
+      const value=Number(euros)*100+Number(cents.padEnd(2,'0'));
       return Number.isSafeInteger(value)&&value<=1000000?value:null;
     }
 
-    function items(){return products.filter(p=>quantities[p.id]>0).map(p=>({productId:p.id,quantity:quantities[p.id]}));}
-    function total(){return products.reduce((sum,p)=>sum+p.priceCents*(quantities[p.id]||0),0);}
+    function total(){return products.reduce((sum,product)=>sum+product.priceCents*(quantities[product.id]||0),0);}
 
     function update(){
       const amount=total(),paid=received();
@@ -144,8 +149,8 @@
       for(const product of products){
         const quantity=quantities[product.id]||0;
         document.querySelector(`[data-quantity="${product.id}"]`).textContent=quantity;
-        document.querySelector(`[data-minus="${product.id}"]`).disabled=busy||quantity===0;
-        document.querySelector(`[data-plus="${product.id}"]`).disabled=busy||quantity>=100;
+        document.querySelector(`[data-minus="${product.id}"]`).disabled=quantity===0;
+        document.querySelector(`[data-plus="${product.id}"]`).disabled=quantity>=100;
         if(quantity){
           const row=document.createElement('li');
           const name=document.createElement('span');
@@ -158,10 +163,7 @@
       }
 
       $('change').classList.remove('short');
-      if(lastChange!==null&&amount===0&&paid===null){
-        $('changeLabel').textContent='Últimas vueltas';
-        $('change').textContent=money(lastChange);
-      }else if(paid===null){
+      if(paid===null){
         $('changeLabel').textContent='Vueltas';
         $('change').textContent='—';
       }else if(paid<amount){
@@ -172,131 +174,59 @@
         $('changeLabel').textContent='Vueltas';
         $('change').textContent=money(paid-amount);
       }
-
-      $('charge').disabled=busy||amount===0||paid===null||paid<amount;
-      $('reset').disabled=busy;
-      $('received').disabled=busy;
-      document.querySelectorAll('[data-pay]').forEach(button=>button.disabled=busy);
     }
 
     function reset(){
       quantities={};
-      saleId=null;
-      lastChange=null;
       $('received').value='';
       update();
     }
 
-    async function api(path,options){
-      const response=await fetch(path,options);
-      let data;
-      try{data=await response.json();}catch{throw Error('No se ha podido leer la respuesta del servidor.');}
-      if(!response.ok)throw Error(data.error||'Error del servidor.');
-      return data;
-    }
+    $('received').addEventListener('input',()=>{$('message').textContent='';update();});
+    document.querySelectorAll('[data-pay]').forEach(button=>button.onclick=()=>{$('received').value=button.dataset.pay;$('message').textContent='';update();});
+    $('reset').onclick=()=>{if(total()&&!confirm('¿Vaciar este pedido?'))return;reset();$('message').textContent='Pedido vacío.';};
 
-    $('received').addEventListener('input',()=>{saleId=null;lastChange=null;$('message').textContent='';update();});
-    document.querySelectorAll('[data-pay]').forEach(button=>button.onclick=()=>{saleId=null;lastChange=null;$('received').value=button.dataset.pay;update();});
-    $('reset').onclick=()=>{if(total()&&!confirm('¿Vaciar este pedido sin guardar una venta?'))return;reset();$('message').textContent='Pedido vacío.';};
+    for(const product of products){
+      const card=document.createElement('article');
+      card.className='product';
+      const copy=document.createElement('div');
+      copy.className='product-copy';
+      const title=document.createElement('h2');
+      title.textContent=product.name;
+      const price=document.createElement('span');
+      price.className='price';
+      price.textContent=money(product.priceCents);
+      copy.append(title,price);
 
-    $('charge').onclick=async()=>{
-      if(busy)return;
-      busy=true;
-      saleId??=newId();
-      update();
-      $('message').textContent='Guardando…';
-      try{
-        const sale=await api('/api/sales',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:saleId,items:items(),receivedCents:received()})});
-        quantities={};
-        saleId=null;
-        $('received').value='';
-        lastChange=sale.quote.changeCents;
-        $('message').textContent='Venta guardada correctamente.';
-      }catch(error){
-        $('message').textContent=error.message+' Puedes volver a intentarlo.';
-      }finally{
-        busy=false;
-        update();
-      }
-    };
-
-    $('summary').onclick=async()=>{
-      try{
-        const summary=await api('/api/summary');
-        $('summaryBody').replaceChildren();
-        const heading=document.createElement('p');
-        heading.textContent=`${summary.count} pedidos · Recaudado: ${money(summary.totalCents)}`;
-        $('summaryBody').append(heading);
-        for(const product of summary.products){
-          const row=document.createElement('div');
-          row.className='summaryrow';
-          const name=document.createElement('span');
-          const quantity=document.createElement('strong');
-          name.textContent=product.name;
-          quantity.textContent=product.quantity;
-          row.append(name,quantity);
-          $('summaryBody').append(row);
-        }
-        $('dialog').showModal();
-      }catch(error){$('message').textContent=error.message;}
-    };
-    $('close').onclick=()=>$('dialog').close();
-
-    (async()=>{
-      try{
-        products=await api('/api/products');
-        for(const product of products){
-          const card=document.createElement('article');
-          card.className='product';
-          const copy=document.createElement('div');
-          copy.className='product-copy';
-          const title=document.createElement('h2');
-          title.textContent=product.name;
-          const price=document.createElement('span');
-          price.className='price';
-          price.textContent=money(product.priceCents);
-          copy.append(title,price);
-
-          const controls=document.createElement('div');
-          controls.className='controls';
-          const minus=document.createElement('button');
-          const quantity=document.createElement('span');
-          const plus=document.createElement('button');
-          minus.textContent='−';
-          minus.dataset.minus=product.id;
-          minus.setAttribute('aria-label',`Quitar ${product.name}`);
-          quantity.className='qty';
-          quantity.dataset.quantity=product.id;
-          plus.textContent='+';
-          plus.className='plus';
-          plus.dataset.plus=product.id;
-          plus.setAttribute('aria-label',`Añadir ${product.name}`);
-          minus.onclick=()=>adjust(product.id,-1);
-          plus.onclick=()=>adjust(product.id,1);
-          controls.append(minus,quantity,plus);
-          card.append(copy,controls);
-          $('products').append(card);
-        }
-        update();
-      }catch(error){$('message').textContent='No se puede conectar. '+error.message;}
-    })();
-
-    function newId(){
-      const bytes=crypto.getRandomValues(new Uint8Array(16));
-      bytes[6]=(bytes[6]&15)|64;
-      bytes[8]=(bytes[8]&63)|128;
-      const hex=Array.from(bytes,byte=>byte.toString(16).padStart(2,'0')).join('');
-      return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
+      const controls=document.createElement('div');
+      controls.className='controls';
+      const minus=document.createElement('button');
+      const quantity=document.createElement('span');
+      const plus=document.createElement('button');
+      minus.textContent='−';
+      minus.dataset.minus=product.id;
+      minus.setAttribute('aria-label',`Quitar ${product.name}`);
+      quantity.className='qty';
+      quantity.dataset.quantity=product.id;
+      plus.textContent='+';
+      plus.className='plus';
+      plus.dataset.plus=product.id;
+      plus.setAttribute('aria-label',`Añadir ${product.name}`);
+      minus.onclick=()=>adjust(product.id,-1);
+      plus.onclick=()=>adjust(product.id,1);
+      controls.append(minus,quantity,plus);
+      card.append(copy,controls);
+      $('products').append(card);
     }
 
     function adjust(id,delta){
-      if(busy)return;
       quantities[id]=Math.max(0,Math.min(100,(quantities[id]||0)+delta));
-      saleId=null;
-      lastChange=null;
       $('message').textContent='';
       update();
     }
+
+    update();
+    if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js').catch(()=>{}));}
   </script>
 </body>
 </html>

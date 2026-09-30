@@ -6,7 +6,5 @@ FROM mcr.microsoft.com/dotnet/aspnet:10.0
 WORKDIR /app
 COPY --from=build /app .
 ENV ASPNETCORE_URLS=http://+:8080
-ENV BAR_DATA_DIR=/data
 EXPOSE 8080
-VOLUME /data
 ENTRYPOINT ["dotnet", "BarraPueblo.dll"]
