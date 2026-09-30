@@ -8,9 +8,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Barra Valdorros">
   <title>Barra de Valdorros</title>
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="icon" href="/escudo-valdorros.png">
-  <link rel="apple-touch-icon" href="/escudo-valdorros.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="escudo-valdorros.png">
+  <link rel="apple-touch-icon" href="escudo-valdorros.png">
   <style>
     :root{--green-950:#193f2b;--green-800:#2c6547;--green-700:#3f7658;--green-300:#b8d7bf;--green-200:#d8ebdc;--green-100:#edf7ef;--lime:#c8dd6b;--paper:#fff;--ink:#1d3024;--muted:#63766a;--danger:#ad473f}
     *{box-sizing:border-box}
@@ -65,7 +65,7 @@
   <header class="app-header">
     <div class="header-inner">
       <a class="crest" href="https://commons.wikimedia.org/wiki/File:Escudo_de_Valdorros.svg" target="_blank" rel="noreferrer" title="Escudo de Valdorros">
-        <img src="/escudo-valdorros.png" alt="Escudo de Valdorros">
+        <img src="escudo-valdorros.png" alt="Escudo de Valdorros">
       </a>
       <div>
         <h1>Barra de Valdorros</h1>
@@ -226,7 +226,7 @@
     }
 
     update();
-    if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/service-worker.js').catch(()=>{}));}
+    if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js').catch(()=>{}));}
   </script>
 </body>
 </html>

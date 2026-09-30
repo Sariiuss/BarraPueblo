@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <rect width="512" height="512" rx="96" fill="#edf7ef"/>
   <rect x="14" y="14" width="484" height="484" rx="82" fill="none" stroke="#b8d7bf" stroke-width="12"/>
-  <image href="/escudo-valdorros.png" x="151" y="34" width="210" height="444" preserveAspectRatio="xMidYMid meet"/>
+  <image href="escudo-valdorros.png" x="151" y="34" width="210" height="444" preserveAspectRatio="xMidYMid meet"/>
 </svg>
