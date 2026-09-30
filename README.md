@@ -1,4 +1,4 @@
-# Barra del pueblo
+# Barra de Valdorros
 
 TPV sencillo para móvil, tablet y ordenador. Backend real en C# / ASP.NET Core 10, pantalla HTML/CSS/JavaScript servida por la misma aplicación. Sin bingo.
 
@@ -42,3 +42,7 @@ Define `BAR_ACCESS_CODE` en el alojamiento para proteger toda la aplicación con
 Agua 1 €; refresco 2 €; cachi Kalimotxo/cerveza 5 €; cachi cubata 11 €; pinta cerveza/Kali 3 €; cubata 6 €; caña/botellín 1,50 €; Radler/0,0 1,50 €; chupito 1,50 €; Jäger 2 €; vino 1,50 €; vermut 2 €; mosto 1,50 €; zumo/batido 2 €.
 
 Edita el catálogo en `Program.cs`; los precios se expresan en céntimos. El servidor comprueba las cantidades y calcula el total sin confiar en precios enviados por el navegador.
+
+## Escudo
+
+La imagen `wwwroot/escudo-valdorros.png` es una miniatura sin modificaciones del [Escudo de Valdorros](https://commons.wikimedia.org/wiki/File:Escudo_de_Valdorros.svg), obra de Asqueladd, utilizada bajo licencia [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/). El diseño heráldico municipal fue aprobado oficialmente el 16 de marzo de 1998.
