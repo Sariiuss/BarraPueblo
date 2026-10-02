@@ -1,4 +1,4 @@
-const CACHE_NAME='barra-valdorros-v3';
+const CACHE_NAME='barra-valdorros-v4';
 const INDEX_URL=new URL('index.html',self.location.href).href;
 const APP_SHELL=['./','index.html','manifest.webmanifest','app-icon.svg','escudo-valdorros.png'].map(path=>new URL(path,self.location.href).href);
 
